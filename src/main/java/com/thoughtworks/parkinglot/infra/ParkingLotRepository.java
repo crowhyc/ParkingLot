@@ -15,7 +15,4 @@ public class ParkingLotRepository {
     return parkingLotStorage.get(id);
   }
 
-  public void insertParkingLot(ParkingLot parkingLot) {
-    parkingLotStorage.put(parkingLot.getParkingLotId(), parkingLot);
-  }
 }
