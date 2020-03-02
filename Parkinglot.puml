@@ -1,0 +1,28 @@
+@startuml
+class ParkingLittleBro{
+    - Id ParkingLittleBroId
+    - List<ParkingLot> ParkingLots
+    + Ticket parkCar(Car)
+}
+class ParkingLot{
+    - Id parkinglotId;
+    - Int limit;
+    - List<Ticket> ticket;
+    - List<Car> cars;
+    + bool isHaveParkingSpace()
+    + Ticket parkCar()
+    + Car getCar(Ticket)
+}
+class Ticket{
+    - Id ticketId;
+    - Token token;
+    + bool isValidToken(Token)
+}
+class Car{
+   - Id carId;
+}
+ParkingLittleBro "1" *--> "1..N" ParkingLot
+ParkingLittleBro "1"-->"1" Car
+ParkingLot "1" *--> "0..N" Car
+ParkingLot "1" *--> "0..N" Ticket
+@enduml
