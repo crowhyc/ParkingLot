@@ -1,24 +1,26 @@
 package com.thoughtworks.parkinglot.application;
 
 import com.thoughtworks.parkinglot.domain.Car;
-import com.thoughtworks.parkinglot.domain.ParkingLotService;
+import com.thoughtworks.parkinglot.domain.ParkingService;
 import com.thoughtworks.parkinglot.domain.Ticket;
 import com.thoughtworks.parkinglot.domain.concepts.Id;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ParkingLotApplicationService {
-  private final ParkingLotService parkingLotService;
+  private final ParkingService parkingService;
 
-  public ParkingLotApplicationService(ParkingLotService parkingLotService) {
-    this.parkingLotService = parkingLotService;
+  public ParkingLotApplicationService(
+      ParkingService parkingService) {
+    this.parkingService = parkingService;
   }
 
+
   public Ticket parkCar(Id parkingLotId, Car car) {
-    return parkingLotService.parkCar(parkingLotId, car);
+    return parkingService.parkCarByBro(parkingLotId, car);
   }
 
   public Car getCar(Id id, Ticket ticket) {
-    return parkingLotService.getCar(id, ticket);
+    return parkingService.getCar(id, ticket);
   }
 }

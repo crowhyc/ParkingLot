@@ -30,6 +30,8 @@ dependencies {
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:23.0'
     implementation 'org.codehaus.groovy:groovy-all:2.5.8'
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
     // Use JUnit test framework
     testImplementation 'org.junit.jupiter:junit-jupiter:5.6.0'
     testImplementation 'org.mockito:mockito-core:2.+'
