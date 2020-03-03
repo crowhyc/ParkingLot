@@ -3,7 +3,7 @@ package com.thoughtworks.parkinglot.domain
 import com.thoughtworks.parkinglot.domain.concepts.Id
 import com.thoughtworks.parkinglot.domain.exception.AllParkingLotNoSpaceException
 import com.thoughtworks.parkinglot.domain.exception.ParkingLotNoSpaceException
-import com.thoughtworks.parkinglot.infra.repo.ParkingLittleBroRepository
+import com.thoughtworks.parkinglot.infra.repo.ParkingBoyRepository
 import com.thoughtworks.parkinglot.infra.repo.ParkingLotRepository
 import spock.lang.Specification
 
@@ -12,16 +12,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals
 import static org.junit.jupiter.api.Assertions.assertNotNull
 import static org.junit.jupiter.api.Assertions.assertNull
 
-class ParkingLittleBroTest extends Specification {
+class ParkingBoyTest extends Specification {
 
-    ParkingLittleBroRepository broRepository = Mock(ParkingLittleBroRepository)
+    ParkingBoyRepository broRepository = Mock(ParkingBoyRepository)
     ParkingLotRepository parkingLotRepository = Mock(ParkingLotRepository)
     ParkingService parkingService = new ParkingService(parkingLotRepository, broRepository)
 
 
     def "should return ticket when park car success"() {
         given:
-        def bro = new ParkingLittleBro(newArrayList(Id.getNewId()))
+        def bro = new ParkingBoy(newArrayList(Id.getNewId()))
         broRepository.queryBroById(_) >> bro
         def parkingLot = new ParkingLot(1)
         parkingLotRepository.queryParkingLotById(_)>>parkingLot
@@ -37,7 +37,7 @@ class ParkingLittleBroTest extends Specification {
         def second = new ParkingLot(1)
 
 
-        def bro = new ParkingLittleBro(newArrayList(first.getParkingLotId(),second.getParkingLotId()))
+        def bro = new ParkingBoy(newArrayList(first.getParkingLotId(),second.getParkingLotId()))
         broRepository.queryBroById(_) >> bro
         parkingLotRepository.queryParkingLotById(first.getParkingLotId())>>first
         parkingLotRepository.queryParkingLotById(second.getParkingLotId())>>second
@@ -49,7 +49,7 @@ class ParkingLittleBroTest extends Specification {
     }
     def "should throw exception when all parkingLot no space"() {
         given:
-        def bro = new ParkingLittleBro(newArrayList(Id.getNewId()))
+        def bro = new ParkingBoy(newArrayList(Id.getNewId()))
         broRepository.queryBroById(_) >> bro
         def parkingLot = new ParkingLot(0)
         parkingLotRepository.queryParkingLotById(_)>>parkingLot

@@ -3,26 +3,26 @@ package com.thoughtworks.parkinglot.infra.repo;
 import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Maps.newHashMap;
 
-import com.thoughtworks.parkinglot.domain.ParkingLittleBro;
+import com.thoughtworks.parkinglot.domain.ParkingBoy;
 import com.thoughtworks.parkinglot.domain.concepts.Id;
 import java.util.Map;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ParkingLittleBroRepository {
-  private Map<Id, ParkingLittleBro> broStorage;
+public class ParkingBoyRepository {
+  private Map<Id, ParkingBoy> broStorage;
 
-  public ParkingLittleBroRepository() {
+  public ParkingBoyRepository() {
     this.broStorage = newHashMap();
     broStorage.put(
-        new Id("1"), new ParkingLittleBro(newArrayList(new Id("1"), new Id("2"), new Id("3"))));
+        new Id("1"), new ParkingBoy(newArrayList(new Id("1"), new Id("2"), new Id("3"))));
   }
 
-  public ParkingLittleBro queryBroById(Id broId) {
+  public ParkingBoy queryBroById(Id broId) {
     return broStorage.get(broId);
   }
 
-  public void insertBro(ParkingLittleBro bro) {
+  public void insertBro(ParkingBoy bro) {
     broStorage.put(bro.getId(), bro);
   }
 }

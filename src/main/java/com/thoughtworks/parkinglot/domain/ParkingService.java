@@ -3,7 +3,7 @@ package com.thoughtworks.parkinglot.domain;
 import com.thoughtworks.parkinglot.domain.concepts.Id;
 import com.thoughtworks.parkinglot.domain.exception.AllParkingLotNoSpaceException;
 import com.thoughtworks.parkinglot.domain.exception.ParkingLotNoSpaceException;
-import com.thoughtworks.parkinglot.infra.repo.ParkingLittleBroRepository;
+import com.thoughtworks.parkinglot.infra.repo.ParkingBoyRepository;
 import com.thoughtworks.parkinglot.infra.repo.ParkingLotRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 public class ParkingService {
 
   private final ParkingLotRepository parkingLotRepository;
-  private final ParkingLittleBroRepository broRepository;
+  private final ParkingBoyRepository broRepository;
 
   public ParkingService(
-      ParkingLotRepository parkingLotRepository, ParkingLittleBroRepository broRepository) {
+      ParkingLotRepository parkingLotRepository, ParkingBoyRepository broRepository) {
     this.parkingLotRepository = parkingLotRepository;
     this.broRepository = broRepository;
   }
@@ -30,8 +30,8 @@ public class ParkingService {
   }
 
   public Ticket parkCarByBro(Id broId, Car car) {
-    ParkingLittleBro parkingLittleBro = broRepository.queryBroById(broId);
-    for (Id lotId : parkingLittleBro.getParkingLotId()) {
+    ParkingBoy parkingBoy = broRepository.queryBroById(broId);
+    for (Id lotId : parkingBoy.getParkingLotId()) {
       ParkingLot parkingLot = parkingLotRepository.queryParkingLotById(lotId);
       try {
         return parkingLot.park(car);
