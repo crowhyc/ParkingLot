@@ -6,15 +6,15 @@ import lombok.Getter;
 @Getter
 public class Ticket {
   private Id ticketId;
-  private Id carId;
+  private String plateNumber;
 
-  public Ticket(Id carId) {
+  public Ticket(String plateNumber) {
     this.ticketId = Id.getNewId();
-    this.carId = carId;
+    this.plateNumber = plateNumber;
   }
 
-  public static Ticket getNewTicket(Id carId) {
-    Ticket ticket = new Ticket(carId);
+  public static Ticket getNewTicket(String plateNumber) {
+    Ticket ticket = new Ticket(plateNumber);
     ticket.ticketId = Id.getNewId();
     return ticket;
   }

@@ -5,9 +5,9 @@ import lombok.Getter;
 
 @Getter
 public class Car {
-  private Id carId;
+  private String plateNumber;
 
-  public Car() {
-    carId = Id.getNewId();
+  public Car(String plateNumber) {
+    this.plateNumber = plateNumber;
   }
 }

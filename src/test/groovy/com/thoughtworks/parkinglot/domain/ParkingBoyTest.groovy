@@ -75,7 +75,7 @@ class ParkingBoyTest extends Specification {
     def "should return car when get car with valid ticket"() {
         given:
         def parkingLot = Mock(ParkingLot)
-        def ticket = new Ticket(Id.getNewId())
+        def ticket = new Ticket("1234")
         parkingLotRepository.queryParkingLotById(parkingLot.getParkingLotId()) >> parkingLot
         parkingLot.getCar(ticket) >> new Car()
         when:
@@ -87,7 +87,7 @@ class ParkingBoyTest extends Specification {
     def "should return null when get car with invalid ticket"() {
         given:
         def parkingLot = Mock(ParkingLot)
-        def ticket = new Ticket(Id.getNewId())
+        def ticket = new Ticket("1234")
         parkingLotRepository.queryParkingLotById(parkingLot.getParkingLotId()) >> parkingLot
         parkingLot.getCar(ticket) >> null
         when:

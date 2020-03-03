@@ -23,7 +23,7 @@ public class ParkingLot {
     if (parkCars.size() >= limit) {
       throw new ParkingLotNoSpaceException();
     }
-    Ticket ticket = Ticket.getNewTicket(car.getCarId());
+    Ticket ticket = Ticket.getNewTicket(car.getPlateNumber());
     parkCars.add(car);
     parkCarTickets.add(ticket);
     return ticket;
@@ -40,7 +40,7 @@ public class ParkingLot {
       return null;
     }
     return parkCars.stream()
-        .filter(c -> c.getCarId().getId().equals(ticket.getCarId().getId()))
+        .filter(c -> c.getPlateNumber().equals(ticket.getPlateNumber()))
         .findFirst()
         .get();
   }
