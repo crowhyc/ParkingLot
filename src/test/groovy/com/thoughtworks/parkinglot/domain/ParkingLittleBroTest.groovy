@@ -3,8 +3,8 @@ package com.thoughtworks.parkinglot.domain
 import com.thoughtworks.parkinglot.domain.concepts.Id
 import com.thoughtworks.parkinglot.domain.exception.AllParkingLotNoSpaceException
 import com.thoughtworks.parkinglot.domain.exception.ParkingLotNoSpaceException
-import com.thoughtworks.parkinglot.infra.ParkingLittleBroRepository
-import com.thoughtworks.parkinglot.infra.ParkingLotRepository
+import com.thoughtworks.parkinglot.infra.repo.ParkingLittleBroRepository
+import com.thoughtworks.parkinglot.infra.repo.ParkingLotRepository
 import spock.lang.Specification
 
 import static com.google.common.collect.Lists.newArrayList
