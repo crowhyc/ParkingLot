@@ -4,6 +4,7 @@ import com.thoughtworks.parkinglot.application.ParkingApplicationService;
 import com.thoughtworks.parkinglot.domain.Car;
 import com.thoughtworks.parkinglot.domain.Ticket;
 import com.thoughtworks.parkinglot.domain.concepts.Id;
+import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ public class ParkingController {
     this.parkingApplicationService = parkingApplicationService;
   }
 
-  @PostMapping("/bro/{id}")
+  @PostMapping("/parkingLot/bro/{id}")
   public Ticket parkCarByBro(@PathVariable(value = "id") Id id, @RequestBody Car car) {
     return parkingApplicationService.parkCarByBro(id, car);
   }
